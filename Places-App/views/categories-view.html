@@ -1,15 +1,59 @@
 <div data-role="view" id="categories-view" data-id="categories-view"
-     data-layout="main-layout" data-title="Categories"
+     data-layout="main-layout" data-title="Match"
      data-show="app.categories.init">
-    <div id="categories-holder">
-        <select id="categories-list" data-role="dropdownlist"
-                data-bind="source: categories, events: { change: change}"
-                data-text-field="Name"
-                data-value-field="Id">
-        </select>
-        <div id="category-info">
-            <h1 data-bind="text: selectedCategory.Name" data-align="center"></h1>            
-            <ul data-role="listview" data-bind="source: selectedCategory.Places" data-template="place-template"></ul>                
+    <div data-role="tabstrip" id="match-result" >
+        <div >
+            <span>Match ID: </span>
+            <span data-bind="text: result.match_id"></span>
         </div>
+        <div>
+            <span id="game-winner" data-bind="text: result.winner"></span>
+        </div>
+        <div >
+            <span>Game mode: </span>
+            <span data-bind="text: result.game_mode"></span>
+        </div>
+        <div >
+            <span>Match duration: </span>
+            <span data-bind="text: result.duration"></span>
+        </div>
+        <div>
+            <span>Played on: </span>
+            <span data-bind="text: result.date"></span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <p>Radiant side:</p>
+            <ul data-role="listview" data-bind="source: result.radiantHeroes" data-style="inset" data-template="match-template"></ul>
+        </div>
+        <div>
+            <p>Dire side:</p>
+            <ul data-role="listview" data-bind="source: result.direHeroes" data-style="inset" data-template="match-template"></ul>
+        </div>
+    </div>
+    <div data-role="tabstrip" data-bind="visible: isCurrentHeroVisible">
+        <img data-bind="attr: { src: currentHero.image }" />
+        <br />
+        <span>Hero: </span>
+        <span data-bind="text: currentHero.name"></span><br />
+        <span>Level: </span>
+        <span data-bind="text: currentHero.level"></span><br />
+        <span>Kills: </span>
+        <span data-bind="text: currentHero.kills"></span><br />
+        <span>Deaths: </span>
+        <span data-bind="text: currentHero.deaths"></span><br />
+        <span>Assists: </span>
+        <span data-bind="text: currentHero.assists"></span><br />
+        <span>Last hits: </span>
+        <span data-bind="text: currentHero.last_hits"></span><br />
+        <span>Denies: </span>
+        <span data-bind="text: currentHero.denies"></span><br />
+        <span>Gold spent: </span>
+        <span data-bind="text: currentHero.gold_spent"></span><br />
+        <span>Gold per minute: </span>
+        <span data-bind="text: currentHero.gold_per_min"></span><br />
+        <span>XP per minute: </span>
+        <span data-bind="text: currentHero.xp_per_min"></span><br />
     </div>
 </div>

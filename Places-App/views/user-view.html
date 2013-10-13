@@ -1,0 +1,27 @@
+<div data-role="view" id="user-view" data-id="user-view"
+     data-layout="main-layout" data-title="User details"
+     data-show="app.users.init">
+    <div id="user-details" data-role="tabstrip" data-bind="visible: isUserVisible">
+        <img id="profilePic" data-bind="attr: { src: user.avatar }" alt="Profile picture" />
+        <div>
+            <p>Username: </p>
+            <h2 data-bind="text: user.name"></h2>
+        </div>
+        <div >
+            <span>Country: </span>
+            <span data-bind="text: user.country"></span>
+        </div>
+    </div>
+    <!--id="user-details-actions"-->
+    <ul id="user-details-actions" data-style="inset" data-template="user-details-template">
+        <li data-bind="{events: {click: navigateToMatches}}">
+            Get user matches
+        </li>
+        <li data-bind="{events: {click: saveAvatar}}">
+            Set avatar
+        </li>
+        <!--<li data-bind="{events: {click: saveContact}}">
+            Set contact name
+        </li>-->
+    </ul>
+</div>
